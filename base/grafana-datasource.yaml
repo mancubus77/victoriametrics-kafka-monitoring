@@ -1,0 +1,15 @@
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDataSource
+metadata:
+  name: vm-grafanadatasource
+  namespace: kafka
+  labels:
+    "app": "grafana"
+spec:
+  datasources:
+    - name: vm
+      editable: true
+      isDefault: true
+      url: 'http://vmselect-simple:8481/select/0/prometheus'
+      type: prometheus
+  name: vm-grafanadatasource.yaml

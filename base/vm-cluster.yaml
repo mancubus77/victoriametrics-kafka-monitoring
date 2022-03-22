@@ -1,0 +1,55 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMCluster
+metadata:
+  name: simple
+  namespace: kafka
+  finalizers:
+    - apps.victoriametrics.com/finalizer
+spec:
+  replicationFactor: 2
+  retentionPeriod: '4'
+  vminsert:
+    image: {}
+    replicaCount: 2
+    resources:
+      limits:
+        cpu: '1'
+        memory: 1000Mi
+      requests:
+        cpu: 500m
+        memory: 500Mi
+  vmselect:
+    cacheMountPath: /select-cache
+    image: {}
+    replicaCount: 2
+    resources:
+      limits:
+        cpu: '1'
+        memory: 1000Mi
+      requests:
+        cpu: 500m
+        memory: 500Mi
+    storage:
+      volumeClaimTemplate:
+        metadata: {}
+        spec:
+          resources:
+            requests:
+              storage: 2Gi
+        status: {}
+  vmstorage:
+    image: {}
+    replicaCount: 2
+    resources:
+      limits:
+        cpu: '1'
+        memory: 1500Mi
+    storage:
+      volumeClaimTemplate:
+        metadata: {}
+        spec:
+          resources:
+            requests:
+              storage: 10Gi
+        status: {}
+    storageDataPath: /vm-data

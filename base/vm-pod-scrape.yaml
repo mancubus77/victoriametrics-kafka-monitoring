@@ -1,0 +1,14 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMPodScrape
+metadata:
+  name: example-pod-scrape
+  namespace: kafka
+spec:
+  podMetricsEndpoints:
+    - targetPort: 9404
+      scheme: http
+  podTargetLabels:
+    - app=exporter
+  # selector:
+  #   matchLabels:
+  #     monitored-by: vm-operator

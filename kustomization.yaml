@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - base/operator-group.yaml
+# Kafka build
+  - base/namespace.yaml
+  - base/amq-operator.yaml
+  - base/kafka.yaml
+  - base/kafka-topic.yaml
+# Grafana build 
+  - base/grafana-operator.yaml
+  - base/grafana.yaml
+  - base/grafana-dashboard-1.yaml
+  - base/grafana-dashboard-2.yaml
+  - base/grafana-dashboard-vm.yaml
+  - base/grafana-datasource.yaml
+# VM build 
+  - base/vm-operator.yaml
+  - base/vm-cluster.yaml
+  - base/vm-agent.yaml
+  - base/vm-pod-scrape.yaml
+  
+

@@ -1,0 +1,24 @@
+# ---
+# apiVersion: operators.coreos.com/v1
+# kind: OperatorGroup
+# metadata:
+#   name: kafka-og
+#   namespace: kafka
+# annotation:
+#   olm.operatorGroup: amq
+# spec:
+#   targetNamespaces:
+#   - kafka
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: amq-streams
+  namespace: kafka
+spec: 
+  installPlanApproval: Automatic
+  channel: stable
+  name: amq-streams
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace 
+  startingCSV: amqstreams.v1.8.3

@@ -1,0 +1,11 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: kafka-og
+  namespace: kafka
+annotation:
+  olm.operatorGroup: vm
+spec:
+  targetNamespaces:
+  - kafka
