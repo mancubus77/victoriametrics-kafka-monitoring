@@ -9,6 +9,7 @@ spec:
       scheme: http
   podTargetLabels:
     - app=exporter
+    - monitored-by=vm-operator
   # selector:
   #   matchLabels:
   #     monitored-by: vm-operator
